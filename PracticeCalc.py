@@ -1,11 +1,13 @@
-import random
 import time
+import random
 
 con = []
-de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden"]
-en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds"]
-numbers_easy = list(range(1, 11))
-numbers_medium = list(range(1, 1001))
+de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100",]
+en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100"]
+numbers_easy_add = list(range(1, 6))
+numbers_easy_subtract = list(range(1, 11))
+numbers_moderate_add = list(range(1, 51))
+numbers_moderate_subtract = list(range(1, 101))
 
 
 
@@ -41,8 +43,8 @@ def mod_easy_add():
     start = time.time()
     while excercise <= 10:
         print(con[12], excercise, "/ 10")
-        a = random.choice(numbers_easy)
-        b = random.choice(numbers_easy)
+        a = random.choice(numbers_easy_add)
+        b = random.choice(numbers_easy_add)
         result = a + b
         print(a, "+", b, "= ")
         userresult = input()
@@ -62,7 +64,8 @@ def mod_easy_add():
     else:
         print(con[16])
         end = time.time()
-        print(end - start, con[18])
+        totaltime = end - start
+        print(totaltime, con[18])
         print(score, "/ 10")
         print("\n")
         mod_easy()
@@ -76,8 +79,8 @@ def mod_easy_subtract():
     start = time.time()
     while excercise <= 10:
         print(con[12], excercise, "/ 10")
-        a = random.choice(numbers_easy)
-        b = random.choice(numbers_easy)
+        a = random.choice(numbers_easy_subtract)
+        b = random.choice(numbers_easy_subtract)
         result = max(a,b) - min(a,b)
         print(max(a,b), "-", min(a,b,), "= ")
         userresult = input()
@@ -97,10 +100,106 @@ def mod_easy_subtract():
     else:
         print(con[16])
         end = time.time()
-        print(end - start, con[18])
+        totaltime = end - start
+        print(totaltime, con[18])
         print(score, "/ 10")
         print("\n")
         mod_easy()
+
+def mod_moderate():
+    print("\n")
+    print(con[3],":", con[5])
+    mod_moderate_menu()
+
+def mod_moderate_menu():
+    print("\n")
+    print("1. ",con[19])
+    print("2. ",con[21])
+    print("d. ",con[3] )
+    mod_moderate_menu_input()
+
+def mod_moderate_menu_input():
+    moderate_top = input(con[11])
+    if moderate_top == "1":
+        mod_moderate_add()
+    elif moderate_top == "2":
+        mod_moderate_subtract()
+    elif moderate_top == "d":
+        difficulty()
+    else:
+        mod_moderate_menu_input()
+
+def mod_moderate_add():
+    print("\n")
+    print(con[19])
+    print("\n")
+    excercise = 1
+    score = 0
+    start = time.time()
+    while excercise <= 10:
+        print(con[12], excercise, "/ 10")
+        a = random.choice(numbers_moderate_add)
+        b = random.choice(numbers_moderate_add)
+        result = a + b
+        print(a, "+", b, "= ")
+        userresult = input()
+        if int(userresult) == result:
+            score += 1
+            excercise += 1
+            print(con[13])
+            print(score, "/ 10")
+            print("\n")
+        if int(userresult) != result:
+            excercise +=1
+            print(con[14])
+            print(a, "+", b, "=", result)
+            print(score, "/ 10", con[15])
+            print("\n")
+
+    else:
+        print(con[16])
+        end = time.time()
+        totaltime = end - start
+        print(totaltime, con[18])
+        print(score, "/ 10")
+        print("\n")
+        mod_moderate()
+
+def mod_moderate_subtract():
+    print("\n")
+    print(con[21])
+    print("\n")
+    excercise = 1
+    score = 0
+    start = time.time()
+    while excercise <= 10:
+        print(con[12], excercise, "/ 10")
+        a = random.choice(numbers_moderate_subtract)
+        b = random.choice(numbers_moderate_subtract)
+        result = max(a,b) - min(a,b)
+        print(max(a,b), "-", min(a,b,), "= ")
+        userresult = input()
+        if int(userresult) == result:
+            score += 1
+            excercise += 1
+            print(con[13])
+            print(score, "/ 10")
+            print("\n")
+        if int(userresult) != result:
+            excercise +=1
+            print(con[14])
+            print(max(a,b), "-", min(a,b,), "=", result)
+            print(score, "/ 10", con[15])
+            print("\n")
+
+    else:
+        print(con[16])
+        end = time.time()
+        totaltime = end - start
+        print(totaltime, con[18])
+        print(score, "/ 10")
+        print("\n")
+        mod_moderate()
 
 
 def language_chooser():
@@ -150,6 +249,6 @@ def difficulty():
 
 
 
-print("Pre-Release 0.0.1")
+print("Pre-Release 0.0.3")
 print("Not all functions work!")
 language_chooser()

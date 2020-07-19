@@ -1,21 +1,7 @@
 # PracticeCalc
-Initial PRE RELEASE 0.0.1
+PRE RELEASE 0.0.5
+Changelog moved to changelog.md
 
+//do this before running
+~pip install colorama
 
-0.0.2
-
-Added time output to modules
-
-Added subtract module (easy)
-
-
-0.0.3
-
-Added moderate difficulty modules
- -add
- -substract
- 
-
-0.0.4
-
-Added moderate multiplication module

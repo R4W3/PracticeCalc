@@ -15,4 +15,7 @@ Added moderate difficulty modules
  -add
  -substract
  
- 
+
+0.0.4
+
+Added moderate multiplication module

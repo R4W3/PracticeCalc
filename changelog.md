@@ -30,3 +30,12 @@ Added hard module for equation solving
 0.1.0
 
 Added Best Time to easy addition module for testing
+
+
+0.1.1
+
+Added Menu coloring to submenus
+
+Added Main Menu
+
+Added Leaderboard in Menu (no functionality)

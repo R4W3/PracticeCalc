@@ -5,8 +5,8 @@ init()
 
 
 con = []
-de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100", "Kleines Einmaleins", "Gleichungen mit einer Unbekannten", "Lösung für X: ", "Bestzeit: "]
-en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100", "Multiplication up to 100", "Equations with one unknown", "Solve for X: ", "Best Time: "]
+de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100", "Kleines Einmaleins", "Gleichungen mit einer Unbekannten", "Lösung für X: ", "Bestzeit: ", "Aufgaben", "Highscores"]
+en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100", "Multiplication up to 100", "Equations with one unknown", "Solve for X: ", "Best Time: ", "Tasks", "Leaderboard"]
 times_easy_add = []
 numbers_easy_add = list(range(1, 6))
 numbers_easy_subtract = list(range(1, 11))
@@ -24,9 +24,10 @@ def mod_easy():
 
 def mod_easy_menu():
     print("\n")
-    print("1. ",con[8])
+    print(Fore.GREEN + "1. ",con[8])
     print("2. ",con[9])
     print("d. ",con[3] )
+    print(Style.RESET_ALL)
     mod_easy_menu_input()
 
 def mod_easy_menu_input():
@@ -123,10 +124,11 @@ def mod_moderate():
 
 def mod_moderate_menu():
     print("\n")
-    print("1. ",con[19])
+    print(Fore.LIGHTBLUE_EX + "1. ",con[19])
     print("2. ",con[21])
     print("3. ",con[22])
     print("d. ",con[3] )
+    print(Style.RESET_ALL)
     mod_moderate_menu_input()
 
 def mod_moderate_menu_input():
@@ -258,8 +260,9 @@ def mod_hard():
 
 def mod_hard_menu():
     print("\n")
-    print("1. ",con[23])
+    print(Fore.RED + "1. ",con[23])
     print("d. ",con[3] )
+    print(Style.RESET_ALL)
     mod_hard_menu_input()
 
 def mod_hard_menu_input():
@@ -309,6 +312,12 @@ def mod_hard_equation():
         print("\n")
         mod_hard()
 
+def leaderboard():
+    print("1.___")
+    print("2.___")
+    print("3.___")
+    main_menu()
+
 
 def language_chooser():
     print("Choose your language")
@@ -333,7 +342,21 @@ def user_info():
     print("\n")
     print(con[2], user_name, "!")
     print("\n")
-    difficulty()
+    main_menu()
+
+def main_menu_input():
+    print("\n")
+    menu_select = input(con[11])
+    if menu_select == "1":
+        difficulty()
+    if menu_select == "2":
+        leaderboard()
+
+def main_menu():
+    print("\n")
+    print("1.", con[26])
+    print("2.", con[27])
+    main_menu_input()
 
 def difficulty_input():
     print("\n")
@@ -361,7 +384,7 @@ def difficulty():
 
 
 
-print(Fore.RED + "Pre-Release 0.1.0")
+print(Fore.RED + "Pre-Release 0.1.1")
 print(Fore.RED + "You may encounter bugs!")
 print(Style.RESET_ALL)
 print("\n")

@@ -5,8 +5,9 @@ init()
 
 
 con = []
-de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100", "Kleines Einmaleins", "Gleichungen mit einer Unbekannten", "Lösung für X: "]
-en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100", "Multiplication up to 100", "Equations with one unknown", "Solve for X: "]
+de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100", "Kleines Einmaleins", "Gleichungen mit einer Unbekannten", "Lösung für X: ", "Bestzeit: "]
+en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100", "Multiplication up to 100", "Equations with one unknown", "Solve for X: ", "Best Time: "]
+times_easy_add = []
 numbers_easy_add = list(range(1, 6))
 numbers_easy_subtract = list(range(1, 11))
 numbers_moderate_add = list(range(1, 51))
@@ -71,6 +72,9 @@ def mod_easy_add():
         print(con[16])
         end = time.time()
         totaltime = end - start
+        times_easy_add.append(totaltime)
+        times_easy_add.sort()
+        print(con[25],times_easy_add[0])
         print(totaltime, con[18])
         print(score, "/ 10")
         print("\n")
@@ -345,9 +349,10 @@ def difficulty_input():
 
 def difficulty():
     print(con[3])
-    print("1. ", con[4])
-    print("2. ", con[5])
-    print("3. ", con[6])
+    print(Fore.GREEN + "1. ", con[4])
+    print(Fore.LIGHTBLUE_EX + "2. ", con[5])
+    print(Fore.RED + "3. ", con[6])
+    print(Style.RESET_ALL)
     difficulty_input()
 
 
@@ -356,8 +361,8 @@ def difficulty():
 
 
 
-print(Fore.RED + "Pre-Release 0.0.5")
-print(Fore.RED + "Not all functions work!")
+print(Fore.RED + "Pre-Release 0.1.0")
+print(Fore.RED + "You may encounter bugs!")
 print(Style.RESET_ALL)
 print("\n")
 language_chooser()

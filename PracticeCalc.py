@@ -1,14 +1,18 @@
 import time
 import random
+from colorama import init, Fore, Back, Style
+init()
+
 
 con = []
-de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100", "Kleines Einmaleins"]
-en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100", "Multiplication up to 100"]
+de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100", "Kleines Einmaleins", "Gleichungen mit einer Unbekannten", "Lösung für X: "]
+en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100", "Multiplication up to 100", "Equations with one unknown", "Solve for X: "]
 numbers_easy_add = list(range(1, 6))
 numbers_easy_subtract = list(range(1, 11))
 numbers_moderate_add = list(range(1, 51))
 numbers_moderate_subtract = list(range(1, 101))
 numbers_moderate_multiply = list(range(1, 11))
+numbers_hard = list(range(1, 51))
 
 
 
@@ -243,6 +247,64 @@ def mod_moderate_multiply():
         print("\n")
         mod_moderate()
 
+def mod_hard():
+    print("\n")
+    print(con[3],":", con[6])
+    mod_hard_menu()
+
+def mod_hard_menu():
+    print("\n")
+    print("1. ",con[23])
+    print("d. ",con[3] )
+    mod_hard_menu_input()
+
+def mod_hard_menu_input():
+    print("\n")
+    hard_top = input(con[11])
+    if hard_top == "1":
+        mod_hard_equation()
+    elif hard_top == "d":
+        difficulty()
+    else:
+        mod_hard_menu_input()
+
+def mod_hard_equation():
+    print("\n")
+    print(con[23])
+    print("\n")
+    excercise = 1
+    score = 0
+    start = time.time()
+    while excercise <= 10:
+        print(con[12], excercise, "/ 10")
+        a = random.choice(numbers_hard)
+        b = random.choice(numbers_hard)
+        c = random.choice(numbers_hard)
+        result = a * b + c
+        print(a, "x", b, "+ X =", result)
+        userresult = input(con[24])
+        if int(userresult) == c:
+            score += 1
+            excercise += 1
+            print(con[13])
+            print(score, "/ 10")
+            print("\n")
+        if int(userresult) != c:
+            excercise +=1
+            print(con[14])
+            print(c, "= X")
+            print(score, "/ 10", con[15])
+            print("\n")
+
+    else:
+        print(con[16])
+        end = time.time()
+        totaltime = end - start
+        print(totaltime, con[18])
+        print(score, "/ 10")
+        print("\n")
+        mod_hard()
+
 
 def language_chooser():
     print("Choose your language")
@@ -294,7 +356,8 @@ def difficulty():
 
 
 
-print("Pre-Release 0.0.4")
-print("Not all functions work!")
+print(Fore.RED + "Pre-Release 0.0.5")
+print(Fore.RED + "Not all functions work!")
+print(Style.RESET_ALL)
 print("\n")
 language_chooser()

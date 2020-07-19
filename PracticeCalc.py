@@ -2,12 +2,13 @@ import time
 import random
 
 con = []
-de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100",]
-en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100"]
+de = ["Hi! Ich bin Rene und wer bist du?", "Gib deinen Name ein: ", "Schön dich kennenzulernen", "Schwierigkeitsgrad", "Leicht", "Mittel", "Schwer", "Wähle deinen Schwierigkeitsgrad: ", "Addition bis 10", "Subtraktion bis 10", 10, "Wähle dein Thema: ", "Aufgabe", "Richtig", "Falsch", "Punkte", "Fertig", "Subtraktion bis 10", "Sekunden", "Addition bis 100",20, "Subtraktion bis 100", "Kleines Einmaleins"]
+en = ["Hi! My Name is Rene and who are you?", "Enter your Name: ", "Nice to meet you", "Difficulty", "Easy", "Medium", "Hard", "Choose a difficulty: ", "Addition up to 10", "Subtraction up to 10", 10, "Choose your topic: ", "Excercise", "Correct", "Wrong", "Points", "Done", "Subtraction up to 10", "Seconds", "Addition up to 100",20, "Substraction up to 100", "Multiplication up to 100"]
 numbers_easy_add = list(range(1, 6))
 numbers_easy_subtract = list(range(1, 11))
 numbers_moderate_add = list(range(1, 51))
 numbers_moderate_subtract = list(range(1, 101))
+numbers_moderate_multiply = list(range(1, 11))
 
 
 
@@ -24,6 +25,7 @@ def mod_easy_menu():
     mod_easy_menu_input()
 
 def mod_easy_menu_input():
+    print("\n")
     easy_top = input(con[11])
     if easy_top == "1":
         mod_easy_add()
@@ -115,15 +117,19 @@ def mod_moderate_menu():
     print("\n")
     print("1. ",con[19])
     print("2. ",con[21])
+    print("3. ",con[22])
     print("d. ",con[3] )
     mod_moderate_menu_input()
 
 def mod_moderate_menu_input():
+    print("\n")
     moderate_top = input(con[11])
     if moderate_top == "1":
         mod_moderate_add()
     elif moderate_top == "2":
         mod_moderate_subtract()
+    elif moderate_top == "3":
+        mod_moderate_multiply()
     elif moderate_top == "d":
         difficulty()
     else:
@@ -201,12 +207,50 @@ def mod_moderate_subtract():
         print("\n")
         mod_moderate()
 
+def mod_moderate_multiply():
+    print("\n")
+    print(con[22])
+    print("\n")
+    excercise = 1
+    score = 0
+    start = time.time()
+    while excercise <= 10:
+        print(con[12], excercise, "/ 10")
+        a = random.choice(numbers_moderate_multiply)
+        b = random.choice(numbers_moderate_multiply)
+        result = a * b
+        print(a, "x", b, "=")
+        userresult = input()
+        if int(userresult) == result:
+            score += 1
+            excercise += 1
+            print(con[13])
+            print(score, "/ 10")
+            print("\n")
+        if int(userresult) != result:
+            excercise +=1
+            print(con[14])
+            print(max(a,b), "-", min(a,b,), "=", result)
+            print(score, "/ 10", con[15])
+            print("\n")
+
+    else:
+        print(con[16])
+        end = time.time()
+        totaltime = end - start
+        print(totaltime, con[18])
+        print(score, "/ 10")
+        print("\n")
+        mod_moderate()
+
 
 def language_chooser():
     print("Choose your language")
     print("1. English")
     print("2. Deutsch")
+    print("\n")
     lan = input("Enter a number and press enter: ")
+    print("\n")
     if lan == "1":
         con.extend(en)
         user_info()
@@ -226,6 +270,7 @@ def user_info():
     difficulty()
 
 def difficulty_input():
+    print("\n")
     diff = input(con[7])
     if diff == "1":
         mod_easy()
@@ -249,6 +294,7 @@ def difficulty():
 
 
 
-print("Pre-Release 0.0.3")
+print("Pre-Release 0.0.4")
 print("Not all functions work!")
+print("\n")
 language_chooser()
